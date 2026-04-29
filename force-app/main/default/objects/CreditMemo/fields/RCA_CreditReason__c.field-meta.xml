@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_CreditReason__c</fullName>
+    <label>Credit Reason</label>
+    <description>Mandatory classification of why the credit is being raised. Required for finance audit trail.</description>
+    <type>Picklist</type>
+    <required>true</required>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Billing Error</fullName><default>false</default><label>Billing Error</label></value>
+            <value><fullName>Service Cancellation</fullName><default>false</default><label>Service Cancellation</label></value>
+            <value><fullName>Pricing Adjustment</fullName><default>false</default><label>Pricing Adjustment</label></value>
+            <value><fullName>Goodwill</fullName><default>false</default><label>Goodwill</label></value>
+            <value><fullName>Duplicate Invoice</fullName><default>false</default><label>Duplicate Invoice</label></value>
+            <value><fullName>Other</fullName><default>false</default><label>Other</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_RenewalReminderSent__c</fullName>
+    <label>Renewal Reminder Sent</label>
+    <description>Set to true by the renewal reminder Flow once the 90-day renewal notification has been sent to the account owner. Prevents duplicate reminders.</description>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+</CustomField>

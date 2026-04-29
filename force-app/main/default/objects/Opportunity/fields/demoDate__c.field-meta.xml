@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>demoDate__c</fullName>
+    <label>Demo Date</label>
+    <description>Date on which a product demonstration is conducted or scheduled for the opportunity. Enables better pipeline visibility and follow-up management.</description>
+    <type>Date</type>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+</CustomField>

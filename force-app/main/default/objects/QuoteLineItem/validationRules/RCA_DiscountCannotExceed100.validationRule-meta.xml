@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_DiscountCannotExceed100</fullName>
+    <active>true</active>
+    <description>Prevents a discount greater than 100% being entered on any quote line.</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Discount)),
+    OR(Discount &gt; 100, Discount &lt; 0)
+)</errorConditionFormula>
+    <errorMessage>Discount must be between 0% and 100%.</errorMessage>
+    <errorDisplayField>Discount</errorDisplayField>
+</ValidationRule>

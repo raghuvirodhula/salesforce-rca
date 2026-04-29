@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Junction object linking Product2 to one or more ProductSellingModels. A product can have multiple selling models (e.g. Monthly and Annual). The rcaProductSelector LWC reads this to show the available selling models in the quoting UI.</description>
+    <label>Product Selling Model Option</label>
+    <pluralLabel>Product Selling Model Options</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

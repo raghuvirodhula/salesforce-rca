@@ -1,0 +1,76 @@
+<template>
+    <lightning-card title="Quote Approval" icon-name="standard:approval">
+
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Processing..." size="small"></lightning-spinner>
+        </template>
+
+        <div class="slds-var-p-around_medium">
+
+            <!-- Quote summary -->
+            <template if:true={quoteData}>
+                <div class="slds-box slds-var-m-bottom_medium">
+                    <p><strong>Quote:</strong> {quoteName}</p>
+                    <p><strong>Total:</strong> {quoteTotal}</p>
+                    <p>
+                        <strong>Status:</strong>
+                        <lightning-badge label={quoteStatus}></lightning-badge>
+                    </p>
+                </div>
+            </template>
+
+            <!-- Already approved message -->
+            <template if:true={isApproved}>
+                <lightning-icon
+                    icon-name="utility:check"
+                    variant="success"
+                    size="small">
+                </lightning-icon>
+                <span class="slds-var-m-left_x-small slds-text-color_success">
+                    This quote is already approved.
+                </span>
+            </template>
+
+            <!-- Submission form -->
+            <template if:true={canSubmit}>
+                <lightning-textarea
+                    label="Submitter Comments"
+                    placeholder="Add context for the approver (optional)..."
+                    value={comments}
+                    onchange={handleCommentsChange}>
+                </lightning-textarea>
+
+                <div class="slds-var-m-top_medium">
+                    <lightning-button
+                        label="Submit for Approval"
+                        variant="brand"
+                        icon-name="utility:approval"
+                        onclick={handleSubmit}
+                        disabled={isLoading}
+                        class="slds-var-m-right_small">
+                    </lightning-button>
+                    <lightning-button
+                        label="Cancel"
+                        onclick={handleCancel}>
+                    </lightning-button>
+                </div>
+            </template>
+
+            <!-- Recall form -->
+            <template if:true={canRecall}>
+                <p class="slds-text-body_regular slds-var-m-bottom_small">
+                    This quote is currently pending approval.
+                </p>
+                <lightning-button
+                    label="Recall Approval Request"
+                    variant="destructive-text"
+                    onclick={handleRecall}
+                    disabled={isLoading}
+                    class="slds-var-m-right_small">
+                </lightning-button>
+                <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

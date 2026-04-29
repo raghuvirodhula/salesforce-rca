@@ -1,0 +1,36 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches: [develop]
+    paths: ['force-app/**']
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate Staging
+        run: |
+          echo "${{ secrets.STAGING_SFDX_AUTH_URL }}" > staging.txt
+          sf org login sfdx-url --sfdx-url-file staging.txt --alias staging --set-default
+
+      - name: Deploy
+        run: |
+          sf project deploy start \
+            --target-org staging \
+            --source-dir force-app \
+            --test-level RunLocalTests \
+            --wait 30
+
+      - name: Notify on Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: '{"text":"❌ Staging deploy FAILED — ${{ github.sha }}"}'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

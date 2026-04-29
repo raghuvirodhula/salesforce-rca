@@ -1,0 +1,67 @@
+<template>
+    <lightning-card title="Billing Dashboard" icon-name="standard:invoice">
+
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Processing..." size="small"></lightning-spinner>
+        </template>
+
+        <!-- KPI tiles -->
+        <div class="slds-var-p-around_medium">
+            <lightning-layout>
+                <lightning-layout-item size="4" padding="around-small">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_medium">{formattedOutstanding}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">Outstanding Balance</p>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" padding="around-small">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_medium">{metrics.overdueCount}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">Overdue Invoices</p>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" padding="around-small">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_medium">{metrics.thisMonthCount}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">Invoices This Month</p>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <!-- Actions bar -->
+        <div class="slds-var-p-horizontal_medium slds-var-m-bottom_small">
+            <template if:true={hasSelection}>
+                <lightning-button
+                    label={selectionLabel}
+                    variant="brand"
+                    icon-name="utility:upload"
+                    onclick={handlePostSelected}>
+                </lightning-button>
+            </template>
+        </div>
+
+        <!-- Invoice table -->
+        <div class="slds-var-p-horizontal_medium">
+            <template if:true={hasOverdue}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={overdueInvoices}
+                    columns={columns}
+                    onrowselection={handleRowSelection}>
+                </lightning-datatable>
+            </template>
+
+            <template if:false={hasOverdue}>
+                <div class="slds-var-p-around_large slds-text-align_center">
+                    <lightning-icon icon-name="utility:check" variant="success" size="small">
+                    </lightning-icon>
+                    <p class="slds-text-body_regular slds-var-m-left_x-small slds-text-color_success">
+                        No overdue invoices — all clear!
+                    </p>
+                </div>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>

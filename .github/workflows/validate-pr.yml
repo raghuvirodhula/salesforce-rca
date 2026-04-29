@@ -1,0 +1,55 @@
+name: Validate Pull Request
+
+on:
+  pull_request:
+    branches: [develop, main]
+    paths:
+      - 'force-app/**'
+      - 'sfdx-project.json'
+
+jobs:
+  validate:
+    name: Validate on Scratch Org
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate DevHub
+        run: |
+          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > devhub.txt
+          sf org login sfdx-url --sfdx-url-file devhub.txt --alias devhub --set-default-dev-hub
+
+      - name: Create Scratch Org
+        run: |
+          sf org create scratch \
+            --definition-file config/project-scratch-def.json \
+            --alias ci-scratch \
+            --duration-days 1 \
+            --wait 15 \
+            --target-dev-hub devhub
+
+      - name: Deploy Source
+        run: sf project deploy start --target-org ci-scratch --wait 20
+
+      - name: Run Apex Tests
+        run: |
+          sf apex run test \
+            --target-org ci-scratch \
+            --test-level RunLocalTests \
+            --output-dir test-results \
+            --result-format junit \
+            --wait 20
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apex-test-results
+          path: test-results/
+
+      - name: Delete Scratch Org
+        if: always()
+        run: sf org delete scratch --target-org ci-scratch --no-prompt

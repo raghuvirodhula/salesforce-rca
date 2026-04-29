@@ -1,0 +1,93 @@
+<template>
+    <lightning-card title="Add Products" icon-name="standard:product_catalog">
+
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Adding product..." size="small"></lightning-spinner>
+        </template>
+
+        <!-- Search bar -->
+        <div class="slds-var-p-horizontal_medium slds-var-p-bottom_small">
+            <lightning-input
+                type="search"
+                label="Search Product Catalog"
+                placeholder="Search by name, code, or family..."
+                onchange={handleSearch}>
+            </lightning-input>
+        </div>
+
+        <!-- Product list -->
+        <template if:true={hasProducts}>
+            <div class="slds-var-p-horizontal_medium">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                    <thead>
+                        <tr>
+                            <th><div class="slds-truncate">Product</div></th>
+                            <th><div class="slds-truncate">Family</div></th>
+                            <th><div class="slds-truncate">Selling Model</div></th>
+                            <th style="width:90px"><div class="slds-truncate">Qty</div></th>
+                            <th><div class="slds-truncate">List Price</div></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={products} for:item="product">
+                            <tr key={product.Id}>
+                                <td>
+                                    <p class="slds-text-body_regular"><strong>{product.Name}</strong></p>
+                                    <p class="slds-text-body_small slds-text-color_weak">{product.ProductCode}</p>
+                                </td>
+                                <td>{product.Family}</td>
+                                <td>
+                                    <!-- Selling model dropdown — core to native RCA -->
+                                    <lightning-combobox
+                                        label=""
+                                        variant="label-hidden"
+                                        data-product-id={product.Id}
+                                        options={product.sellingModelOptions}
+                                        value={product.defaultModelId}
+                                        onchange={handleModelChange}>
+                                    </lightning-combobox>
+                                </td>
+                                <td>
+                                    <lightning-input
+                                        type="number"
+                                        label=""
+                                        variant="label-hidden"
+                                        min="1"
+                                        value="1"
+                                        data-product-id={product.Id}
+                                        onchange={handleQuantityChange}>
+                                    </lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-formatted-number
+                                        value={product.UnitPrice}
+                                        format-style="currency"
+                                        currency-code="USD">
+                                    </lightning-formatted-number>
+                                </td>
+                                <td>
+                                    <lightning-button
+                                        label="Add"
+                                        variant="brand"
+                                        data-product-id={product.Id}
+                                        onclick={handleAddToQuote}>
+                                    </lightning-button>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+        <template if:false={hasProducts}>
+            <div class="slds-var-p-around_large slds-text-align_center">
+                <p class="slds-text-body_regular slds-text-color_weak">
+                    No products found in the catalog.
+                </p>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_RenewalOpportunity__c</fullName>
+    <label>Renewal Opportunity</label>
+    <description>Lookup to the Opportunity created for renewing this Asset. Populated automatically by the renewal automation Flow when LifecycleEndDate is within the renewal window.</description>
+    <type>Lookup</type>
+    <referenceTo>Opportunity</referenceTo>
+    <relationshipLabel>Renewal Assets</relationshipLabel>
+    <relationshipName>RenewalAssets</relationshipName>
+    <required>false</required>
+    <deleteConstraint>SetNull</deleteConstraint>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Native RCA pricing object that defines a tiered or volume discount schedule. Contains one or more PriceAdjustmentTier records. Replaces CPQ Discount Schedules. Referenced by RCAPricingService.resolveEffectivePrice() to determine unit price based on quantity.</description>
+    <label>Price Adjustment Schedule</label>
+    <pluralLabel>Price Adjustment Schedules</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

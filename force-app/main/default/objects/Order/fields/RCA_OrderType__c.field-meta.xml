@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_OrderType__c</fullName>
+    <label>RCA Order Type</label>
+    <description>Distinguishes order motion: New, Renewal, Amendment, or Cancellation. Used by Dynamic Revenue Orchestrator to determine fulfilment and billing actions.</description>
+    <type>Picklist</type>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>New</fullName><default>true</default><label>New</label></value>
+            <value><fullName>Renewal</fullName><default>false</default><label>Renewal</label></value>
+            <value><fullName>Amendment</fullName><default>false</default><label>Amendment</label></value>
+            <value><fullName>Cancellation</fullName><default>false</default><label>Cancellation</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

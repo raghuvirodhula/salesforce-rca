@@ -1,0 +1,36 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: production     # Requires manual approval gate in GitHub Environments
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate Production
+        run: |
+          echo "${{ secrets.PROD_SFDX_AUTH_URL }}" > prod.txt
+          sf org login sfdx-url --sfdx-url-file prod.txt --alias production --set-default
+
+      - name: Deploy to Production
+        run: |
+          sf project deploy start \
+            --target-org production \
+            --source-dir force-app \
+            --test-level RunSpecifiedTests \
+            --run-tests RCAQuoteServiceTest \
+            --wait 60
+
+      - name: Tag Release
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "prod-$(date +'%Y%m%d-%H%M')" -m "Production ${{ github.sha }}"
+          git push origin --tags

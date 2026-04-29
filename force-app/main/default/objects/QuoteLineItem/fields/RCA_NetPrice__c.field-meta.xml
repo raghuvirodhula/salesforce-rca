@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_NetPrice__c</fullName>
+    <label>Net Price</label>
+    <description>Calculated net price after discount. Formula: UnitPrice * Quantity * (1 - Discount/100).</description>
+    <type>Currency</type>
+    <precision>18</precision>
+    <scale>2</scale>
+    <required>false</required>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_ProrationAmount__c</fullName>
+    <label>Proration Amount</label>
+    <description>Credit or charge amount resulting from the proration calculation on this mid-term action. Populated by RCAPricingService.calculateProration() and carried to the amendment invoice.</description>
+    <type>Currency</type>
+    <precision>18</precision>
+    <scale>2</scale>
+    <required>false</required>
+</CustomField>

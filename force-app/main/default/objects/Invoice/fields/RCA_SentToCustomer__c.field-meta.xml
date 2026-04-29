@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_SentToCustomer__c</fullName>
+    <label>Sent to Customer</label>
+    <description>Checkbox set to true by the billing automation once the invoice PDF has been emailed to the billing contact. Prevents duplicate sends.</description>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+</CustomField>

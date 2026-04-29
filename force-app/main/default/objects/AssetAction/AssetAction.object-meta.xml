@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Native RCA AssetAction — records mid-term changes to an Asset (Amend, Renew, Cancel). The correct mechanism for mid-term modifications in native RCA. The platform uses this to calculate proration via the configured ProrationPolicy. Do not create amendment Orders directly.</description>
+    <label>Asset Action</label>
+    <pluralLabel>Asset Actions</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

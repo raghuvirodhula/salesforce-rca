@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Native RCA Quote — the primary quoting object in Revenue Cloud Advanced. Replaces SBQQ__Quote__c from legacy CPQ.</description>
+    <label>Quote</label>
+    <pluralLabel>Quotes</pluralLabel>
+    <nameField>
+        <label>Quote Name</label>
+        <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

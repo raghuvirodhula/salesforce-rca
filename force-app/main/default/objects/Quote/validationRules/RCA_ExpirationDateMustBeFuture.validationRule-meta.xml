@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_ExpirationDateMustBeFuture</fullName>
+    <active>true</active>
+    <description>Prevents saving a Quote with an expiration date in the past. Applies to all deal types.</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(ExpirationDate)),
+    ExpirationDate &lt; TODAY()
+)</errorConditionFormula>
+    <errorMessage>Expiration Date must be today or a future date.</errorMessage>
+    <errorDisplayField>ExpirationDate</errorDisplayField>
+</ValidationRule>

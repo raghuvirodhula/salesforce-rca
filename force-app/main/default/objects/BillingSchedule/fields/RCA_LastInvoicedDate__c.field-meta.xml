@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_LastInvoicedDate__c</fullName>
+    <label>Last Invoiced Date</label>
+    <description>Date the most recent Invoice was generated from this BillingSchedule. Populated by RCABillingService after invoice creation.</description>
+    <type>Date</type>
+    <required>false</required>
+</CustomField>

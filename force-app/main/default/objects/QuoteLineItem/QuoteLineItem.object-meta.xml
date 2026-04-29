@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Native RCA Quote line. Carries ProductSellingModelId to define the selling motion (One-Time, Termed, Evergreen). Replaces SBQQ__QuoteLine__c.</description>
+    <label>Quote Line Item</label>
+    <pluralLabel>Quote Line Items</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

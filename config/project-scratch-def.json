@@ -1,0 +1,18 @@
+{
+  "orgName": "RCA Native Dev Org",
+  "edition": "Developer",
+  "features": [
+    "EnableSetPasswordInApi",
+    "RevenueCloudAdvanced"
+  ],
+  "settings": {
+    "orgPreferenceSettings": {
+      "s1DesktopEnabled": true
+    },
+    "industriesSettings": {
+      "enableRevenueCloud": true
+    }
+  },
+  "hasSampleData": false,
+  "language": "en_US"
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_CannotActivateWithoutLines</fullName>
+    <active>true</active>
+    <description>Prevents an Order being activated if it has no OrderItems. The platform requires at least one line to generate BillingSchedules.</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Status, "Activated"),
+    NOT(ISNEW())
+)</errorConditionFormula>
+    <errorMessage>An Order must have at least one Order Product before it can be activated.</errorMessage>
+</ValidationRule>

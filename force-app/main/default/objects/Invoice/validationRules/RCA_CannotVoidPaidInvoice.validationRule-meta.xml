@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RCA_CannotVoidPaidInvoice</fullName>
+    <active>true</active>
+    <description>Prevents setting Status to Cancelled/Void on an invoice that has already been fully paid. Raise a CreditMemo instead.</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Status, "Cancelled"),
+    NOT(ISNEW()),
+    ISPICKVAL(PRIORVALUE(Status), "Paid")
+)</errorConditionFormula>
+    <errorMessage>A Paid invoice cannot be voided. Please raise a Credit Memo instead.</errorMessage>
+</ValidationRule>
