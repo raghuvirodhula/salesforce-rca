@@ -1,0 +1,8 @@
+.error-message {
+    color: var(--lwc-colorTextError, #ba0517);
+    font-weight: 600;
+}
+
+.total-line {
+    font-size: 1.05rem;
+}
