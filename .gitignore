@@ -9,3 +9,11 @@ node_modules/
 test-results/
 .DS_Store
 Thumbs.db
+
+# Secrets / local config — never commit
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+scripts/_*.py

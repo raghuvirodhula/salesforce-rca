@@ -1,0 +1,13 @@
+﻿{
+  "_comment": "Copy this file to settings.local.json and fill in your values. settings.local.json is gitignored — never commit it.",
+  "env": {
+    "AWS_PROFILE": "default",
+    "JIRA_URL": "https://raghuvirodhula.atlassian.net",
+    "JIRA_USERNAME": "raghu.virodhula@gmail.com",
+    "JIRA_API_TOKEN": "YOUR_JIRA_API_TOKEN"
+  },
+  "permissions": {
+    "allow": [],
+    "deny": []
+  }
+}
