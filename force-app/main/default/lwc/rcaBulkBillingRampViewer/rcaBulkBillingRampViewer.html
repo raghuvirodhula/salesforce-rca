@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="BB1 Bulk Billing — Ramp Pricing" icon-name="standard:product_consumed">
+
+        <div class="slds-p-around_medium slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-4 slds-medium-size_1-of-4">
+                <lightning-input type="text"   label="Product Code"
+                    value={productCode} onchange={handleProductCodeChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-medium-size_1-of-4">
+                <lightning-input type="date"   label="Contract Start"
+                    value={contractStartDate} onchange={handleStartDateChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-medium-size_1-of-4">
+                <lightning-input type="number" label="Term (Years)" min="1" max="30" step="1"
+                    value={termYears} onchange={handleTermChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-medium-size_1-of-4">
+                <lightning-input type="number" label="Base Annual Price" step="0.01" min="0"
+                    value={baseAnnualPrice} onchange={handlePriceChange}></lightning-input>
+            </div>
+        </div>
+
+        <template lwc:if={error}>
+            <div class="slds-p-around_medium error-message" role="alert">
+                <lightning-icon icon-name="utility:error" size="x-small" alternative-text="Error"></lightning-icon>
+                <span class="slds-m-left_x-small">{error}</span>
+            </div>
+        </template>
+
+        <template lwc:if={hasTiers}>
+            <div class="slds-p-around_medium">
+                <lightning-datatable
+                    key-field="yearNumber"
+                    data={tiers}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+
+                <div class="slds-text-align_right slds-p-top_medium total-line">
+                    <strong>Total Contract Value:&nbsp;</strong>
+                    <lightning-formatted-number
+                        value={totalContractValue}
+                        format-style="currency">
+                    </lightning-formatted-number>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

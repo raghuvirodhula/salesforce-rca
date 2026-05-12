@@ -72,4 +72,17 @@
         <object>ProductSellingModel</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <!-- KAN-8 Bulk Billing -->
+    <classAccesses>
+        <apexClass>RCABulkBillingService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RCABulkBillingRampSettingSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RCABulkBillingPayload</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
 </PermissionSet>

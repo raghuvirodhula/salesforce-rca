@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RampPayloadJson__c</fullName>
+    <description>JSON-serialized ramp schedule (year, discount %, net price) ready for downstream Zuora integration.</description>
+    <externalId>false</externalId>
+    <label>Ramp Payload JSON</label>
+    <length>32768</length>
+    <required>true</required>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>
