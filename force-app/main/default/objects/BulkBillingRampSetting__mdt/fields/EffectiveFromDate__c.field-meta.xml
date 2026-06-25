@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EffectiveFromDate__c</fullName>
+    <description>Date this ramp row becomes effective. Rows with a future date are ignored by the runtime.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Effective From Date</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

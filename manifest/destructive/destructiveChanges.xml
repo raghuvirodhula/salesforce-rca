@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  KAN-8 — retire the legacy thin BulkBillingService superseded by
+  RCABulkBillingService (production rewrite). Deploy this manifest with
+  --pre-destructive-changes so the package validates before the new classes
+  take their place in the org.
+-->
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>BulkBillingService</members>
+        <members>BulkBillingServiceTest</members>
+        <name>ApexClass</name>
+    </types>
+</Package>
